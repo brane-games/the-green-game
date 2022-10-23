@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=2]
+
+[ext_resource path="res://addons/vpainter/additional_resources/height_blend_4_textures.shader" type="Shader" id=1]
+[ext_resource path="res://materials/moss/moss_albedo.png" type="Texture" id=2]
+[ext_resource path="res://materials/redrock/redrock_normal.png" type="Texture" id=3]
+[ext_resource path="res://materials/rock_moss/rock_moss_normal.png" type="Texture" id=4]
+[ext_resource path="res://materials/rock_moss/rock_moss_albedo.png" type="Texture" id=5]
+[ext_resource path="res://materials/redrock/redrock_albedo.png" type="Texture" id=6]
+[ext_resource path="res://materials/moss/moss_normal.png" type="Texture" id=7]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/uv_scale = 11.704
+shader_param/r_uv_scale = 5.386
+shader_param/blend_softness1 = 0.629
+shader_param/blend_softness2 = 0.776
+shader_param/blend_softness3 = 0.424
+shader_param/roughness = null
+shader_param/point_size = null
+shader_param/roughness_texture_channel = Plane( 0.33, 0.33, 0.33, 0 )
+shader_param/c1 = ExtResource( 6 )
+shader_param/n1 = ExtResource( 3 )
+shader_param/c2 = ExtResource( 2 )
+shader_param/n2 = ExtResource( 7 )
+shader_param/c3 = ExtResource( 5 )
+shader_param/n3 = ExtResource( 4 )

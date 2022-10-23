@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/main/main.gd" type="Script" id=1]
+[ext_resource path="res://src/handle/handle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://materials/sand_second_try/sand_second_try.tres" type="Material" id=10]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 10 )
+size = Vector3( 55, 1, 55 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 55, 1, 55 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+transform = Transform( -0.841133, 0, -0.540828, 0, 1, 0, 0.540828, 0, -0.841133, -1.2804, 0.792992, -1.40267 )
+
+[node name="SoftBody" parent="Player/Head/garbage_bag" index="0"]
+attachments/0/offset = Vector3( 0.312112, 0.655402, -0.515481 )
+attachments/1/offset = Vector3( 0.315524, 0.593755, -0.476468 )
+attachments/2/offset = Vector3( 0.246712, 0.542319, -0.559559 )
+attachments/3/offset = Vector3( 0.281139, 0.73159, -0.390738 )
+attachments/4/offset = Vector3( 0.279275, 0.667648, -0.337884 )
+attachments/5/offset = Vector3( 0.179989, 0.705612, -0.273206 )
+attachments/6/offset = Vector3( 0.159501, 0.421862, -0.554144 )
+
+[node name="Floor" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.504871, 0 )
+shape = SubResource( 2 )
+
+[node name="Handle" parent="." instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.431419, 4.54576 )
+
+[connection signal="turn_finished" from="Handle" to="Player" method="_on_Handle_turn_finished"]
+
+[editable path="Player"]
+[editable path="Player/Head"]
+[editable path="Player/Head/garbage_bag"]

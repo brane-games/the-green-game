@@ -1,0 +1,272 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/menu/menu.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Heming Variable/Heming Variable.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="MainMenu" type="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -232.5
+margin_right = 232.5
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -232.5
+margin_right = 232.5
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_right = 465.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 465.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 1 )
+text = "The Green Game"
+align = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 100.0
+margin_right = 465.0
+margin_bottom = 713.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+margin_top = 717.0
+margin_right = 465.0
+margin_bottom = 748.0
+text = "Start Game"
+
+[node name="Control4" type="Control" parent="VBoxContainer"]
+margin_top = 752.0
+margin_right = 465.0
+margin_bottom = 784.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 788.0
+margin_right = 465.0
+margin_bottom = 820.0
+
+[node name="ShadowsCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+margin_right = 156.0
+margin_bottom = 32.0
+pressed = true
+text = "Shadows"
+
+[node name="Control6" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 160.0
+margin_right = 322.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+size_flags_horizontal = 3
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 326.0
+margin_right = 465.0
+margin_bottom = 32.0
+text = " Credits "
+
+[node name="Control5" type="Control" parent="VBoxContainer"]
+margin_top = 824.0
+margin_right = 465.0
+margin_bottom = 856.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+margin_top = 860.0
+margin_right = 465.0
+margin_bottom = 891.0
+text = "Exit Game"
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+margin_top = 895.0
+margin_right = 465.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="CreditsPanelContainer" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -256.0
+margin_right = 256.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 512, 512 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanelContainer"]
+margin_right = 512.0
+margin_bottom = 512.0
+rect_clip_content = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsPanelContainer/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 477.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer"]
+margin_right = 512.0
+margin_bottom = 7708.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 248.0
+size_flags_horizontal = 3
+text = "## Music
+
+Does It Exist or Do I Have to Create It? by Chris Zabriskie
+
+It Takes a Lot to Keep a Figure Like This by Chris Zabriskie
+"
+autowrap = true
+
+[node name="Label2" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 252.0
+margin_right = 500.0
+margin_bottom = 841.0
+size_flags_horizontal = 3
+text = "## Shaders
+
+Pixel Perfect outline shader by axilirate
+https://godotshaders.com/shader/pixel-perfect-outline-shader/
+
+Realistic Water Shader for Godot 3.4
+UnionBytes, Achim Menzel (alias AiYori)
+https://github.com/godot-extended-libraries/godot-realistic-water
+
+Wormhole by Nepacka
+https://godotshaders.com/shader/wormhole/"
+autowrap = true
+
+[node name="Label3" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 845.0
+margin_right = 500.0
+margin_bottom = 1279.0
+size_flags_horizontal = 3
+text = "## Plugins
+
+Godot First Person Starter by  Dimitar \"Whimfoome\" Dimitrov:
+https://github.com/Whimfoome/godot-FirstPersonStarter
+
+- God Rays Plugin by SIsilicon
+https://github.com/SIsilicon/Godot-God-Rays-Plugin
+
+- VPainter by Toman Kirilov:
+https://github.com/tomankirilov/VPainter"
+autowrap = true
+
+[node name="Label4" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1283.0
+margin_right = 500.0
+margin_bottom = 1655.0
+size_flags_horizontal = 3
+text = "## Textures
+
+wasteland_clouds exr from polyhaven.com:
+https://polyhaven.com/a/wasteland_clouds 
+
+Material Maker library"
+autowrap = true
+
+[node name="Label5" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 1659.0
+margin_right = 500.0
+margin_bottom = 6805.0
+size_flags_horizontal = 3
+text = "# 3D Models
+
+Split Point, Victoria (Australia) by Stefan A Vollgger is licensed under Creative Commons Attribution
+
+\"Wellington Rocks, Tunbridge Wells, UK\" (https://skfb.ly/VVuK) by Blayne Jackson is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Rocks Photogrammetry scan\" (https://skfb.ly/689GY) by GSXNet is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+
+\"A large lying dead tree trunk\" (https://skfb.ly/68XWI) by 3dhdscan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Mossy old tree log\" (https://skfb.ly/6WMDY) by Julian Malik is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Dead Trees Demo\" (https://skfb.ly/ouL8q) by Quadra3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Interior of Daring Shipwreck-New Zealand\" (https://skfb.ly/6UEwu) by susannegrieve is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
+
+\"Plastic Water Bottle\" (https://skfb.ly/6Uzt9) by RoutineStudio is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Plastic Bottle\" (https://skfb.ly/o9YBG) by Shanice de Jong is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Ridged Plastic Cup\" (https://skfb.ly/owoTK) by CDcruz is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Street Garbage\" (https://skfb.ly/o6oxI) by Thunder is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Discarded Covid-19 Mask\" (https://skfb.ly/6TKLv) by Marc Sawyer is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Overgrown Train Station Clutter - Cans\" (https://skfb.ly/osuvO) by Mysticbobo is licensed under Creative Commons Attribution-NoDerivs (http://creativecommons.org/licenses/by-nd/4.0/).
+
+\"Bottle\" (https://skfb.ly/6qtnq) by Shedmon is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Bottle with scroll\" (https://skfb.ly/6AtGW) by Marcus Vinicius is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Grabber Arm1(could Use Redesign Maybe)\" (https://skfb.ly/6YDQF) by notfinnflower is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"The Orange Tree\" (https://skfb.ly/osLOY) by Shahriar Shahrabi is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Space Ship Hallway\" (https://skfb.ly/6SqUF) by yeeyeeman is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Sci-Fi Door [Spaceship Indweller]\" (https://skfb.ly/YUUV) by Ramil Kudashev is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"[FREE] Sci-fi furniture/props pack\" (https://skfb.ly/6AL6t) by NinKorr3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Furniture Handle\" (https://skfb.ly/6QTSM) by romullus is licensed under Creative Commons Attribution-ShareAlike (http://creativecommons.org/licenses/by-sa/4.0/).
+
+\"Giraffe / Street Light / Black\" (https://skfb.ly/o9Cso) by invisiprim is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Sci-fi Props\" (https://skfb.ly/6WMuC) by Qwestgamp is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Potted Plant\" (https://skfb.ly/o6pzL) by Gonçalo Miranda is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)."
+autowrap = true
+
+[node name="Label6" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 6809.0
+margin_right = 500.0
+margin_bottom = 7367.0
+size_flags_horizontal = 3
+text = "## Sound 
+
+Pixabay library
+
+Bottle squeeze effect
+Sound Effect by <a href=\"https://pixabay.com/users/abd3lhadi-3582751/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=18469\">ABD3LHADI</a> from <a href=\"https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=18469\">Pixabay</a>"
+autowrap = true
+
+[node name="CloseCreditsButton" type="Button" parent="CreditsPanelContainer/VBoxContainer"]
+margin_top = 481.0
+margin_right = 512.0
+margin_bottom = 512.0
+text = "Close"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/ShadowsCheckBox" to="." method="_on_ShadowsCheckBox_toggled"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="CreditsPanelContainer/VBoxContainer/CloseCreditsButton" to="." method="_on_CloseCreditsButton_pressed"]

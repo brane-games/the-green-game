@@ -1,0 +1,55 @@
+[gd_scene format=2]
+
+[node name="NewTab" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1016.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 5.0
+margin_right = 68.0
+margin_bottom = 19.0
+text = "Tab Name:"
+
+[node name="TabTitleLineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_left = 72.0
+margin_right = 152.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 0 )
+text = "New Tab"
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_left = 156.0
+margin_right = 993.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="DeleteTabButton" type="Button" parent="HBoxContainer"]
+margin_left = 997.0
+margin_right = 1016.0
+margin_bottom = 24.0
+text = "x"
+
+[node name="textEdit" type="TextEdit" parent="."]
+margin_top = 28.0
+margin_right = 1016.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+highlight_current_line = true
+breakpoint_gutter = true
+highlight_all_occurrences = true
+smooth_scrolling = true
+wrap_enabled = true
+caret_blink = true
+[connection signal="text_changed" from="HBoxContainer/TabTitleLineEdit" to="." method="_on_TabTitleLineEdit_text_changed"]

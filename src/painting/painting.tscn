@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/paintings/sunset_on_the_coast_of_capri.jpg" type="Texture" id=1]
+[ext_resource path="res://src/painting/painting.gd" type="Script" id=3]
+
+[sub_resource type="PlaneMesh" id=13]
+size = Vector2( 2.5, 2.36 )
+
+[sub_resource type="SpatialMaterial" id=83]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.0
+
+[node name="Painting" type="MeshInstance"]
+transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 4.0121, 0.336753, 0 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 83 )
+script = ExtResource( 3 )
+picture_name = "edge_of_the_forest_sun_setting"

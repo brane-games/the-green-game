@@ -1,0 +1,247 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/intro_scene/intro_scene.gd" type="Script" id=1]
+[ext_resource path="res://src/intro_scene/brane_small.png" type="Texture" id=2]
+[ext_resource path="res://src/theme.tres" type="Theme" id=3]
+[ext_resource path="res://src/intro_scene/brane_opening.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float PHI = 1.61803398874989484820459; // Golden Ratio   
+uniform float PI  = 2.14159265358979323846264; // PI
+uniform float SQ2 = 3.41421356237309504880169; // Square Root of Two
+
+
+float gold_noise(in vec2 coordinate, in float seed){
+    return fract(tan(distance(coordinate*(seed+PHI), vec2(PHI, PI)))*SQ2);
+}
+
+void fragment() {
+	float x = gold_noise(FRAGCOORD.xy, TIME);
+	COLOR  = vec4(x);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/PHI = 1.61803
+shader_param/PI = 2.14159
+shader_param/SQ2 = 3.41421
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float range = 0.05;
+uniform float noiseQuality = 250.0;
+uniform float noiseIntensity = 0.0008;
+uniform float offsetIntensity = 0.02;
+uniform float colorOffsetIntensity = 1.3;
+
+float rand(vec2 co)
+{
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+float verticalBar(float pos, float uvY, float offset)
+{
+    float edge0 = (pos - range);
+    float edge1 = (pos + range);
+
+    float x = smoothstep(edge0, pos, uvY) * offset;
+    x -= smoothstep(pos, edge1, uvY) * offset;
+    return x;
+}
+
+
+void fragment() {
+	vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy;
+    
+    for (float i = 0.0; i < 0.71; i += 0.1313)
+    {
+        float d = mod(TIME * i, 1.7);
+        float o = sin(1.0 - tan(TIME * 0.24 * i));
+    	o *= offsetIntensity;
+        uv.x += verticalBar(d, uv.y, o);
+    }
+    
+    float uvY = uv.y;
+    uvY *= noiseQuality;
+    uvY = float(int(uvY)) * (1.0 / noiseQuality);
+    float noise = rand(vec2(TIME * 0.00001, uvY));
+    uv.x += noise * noiseIntensity;
+
+    vec2 offsetR = vec2(0.006 * sin(TIME), 0.0) * colorOffsetIntensity;
+    vec2 offsetG = vec2(0.0073 * (cos(TIME * 0.97)), 0.0) * colorOffsetIntensity;
+    
+    float r = texture(SCREEN_TEXTURE, uv + offsetR).r;
+    float g = texture(SCREEN_TEXTURE, uv + offsetG).g;
+    float b = texture(SCREEN_TEXTURE, uv).b;
+
+    vec4 tex = vec4(r, g, b, 1.0);
+    COLOR = tex;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/range = 0.05
+shader_param/noiseQuality = 250.0
+shader_param/noiseIntensity = 0.0008
+shader_param/offsetIntensity = 0.02
+shader_param/colorOffsetIntensity = 1.3
+
+[sub_resource type="Animation" id=5]
+resource_name = "Opening"
+length = 2.5
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Noise:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.06, 1.56 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VHS:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.06, 1.56 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CenterContainer/VBoxContainer/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.06 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CenterContainer/VBoxContainer/LoadingLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer/VBoxContainer/LoadingLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="IntroSceneBRANE" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorBlack" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Noise" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.657451 )
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 20.0
+color = Color( 0.75, 0.316406, 0.316406, 1 )
+
+[node name="VHS" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 570.0
+margin_top = 334.0
+margin_right = 709.0
+margin_bottom = 385.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 320, 60 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_right = 139.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="LoadingLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 20.0
+margin_right = 139.0
+margin_bottom = 51.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.882353, 0.788235, 0.517647, 1 )
+text = "loading..."
+align = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Opening = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

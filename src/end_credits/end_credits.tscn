@@ -1,0 +1,268 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://fonts/Heming Variable/Heming Variable.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sprites/godot-logo-large.png" type="Texture" id=2]
+[ext_resource path="res://src/end_credits/end_credits.gd" type="Script" id=3]
+[ext_resource path="res://src/end_credits/credit_control.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=133]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=134]
+bg_color = Color( 0.431373, 0.501961, 0.490196, 0.188235 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=135]
+bg_color = Color( 0.6, 0.6, 0.6, 0.0980392 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=136]
+bg_color = Color( 0.431373, 0.501961, 0.490196, 0.188235 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=137]
+
+[sub_resource type="StyleBoxFlat" id=138]
+bg_color = Color( 0.141176, 0.168627, 0.180392, 0.988235 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+expand_margin_top = 16.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="Theme" id=139]
+default_font = SubResource( 133 )
+Button/colors/font_color = Color( 0.866667, 0.984314, 0.929412, 1 )
+Button/colors/font_color_disabled = Color( 0.745098, 0.745098, 0.745098, 1 )
+Button/colors/font_color_focus = Color( 1, 1, 1, 1 )
+Button/colors/font_color_hover = Color( 0.898039, 0.988235, 0.996078, 1 )
+Button/colors/font_color_pressed = Color( 0.635294, 0.898039, 0.662745, 1 )
+Button/constants/hseparation = 0
+Button/fonts/font = SubResource( 133 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 134 )
+Button/styles/hover = SubResource( 134 )
+Button/styles/normal = SubResource( 135 )
+Button/styles/pressed = SubResource( 136 )
+CheckBox/colors/font_color = Color( 0.866667, 0.984314, 0.929412, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.866667, 0.984314, 0.929412, 1 )
+CheckBox/colors/font_color_focus = Color( 0.866667, 0.984314, 0.929412, 1 )
+CheckBox/colors/font_color_hover = Color( 0.639216, 0.890196, 0.678431, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 0.866667, 0.984314, 0.929412, 1 )
+CheckBox/colors/font_color_pressed = Color( 0.866667, 0.984314, 0.929412, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 7
+CheckBox/fonts/font = SubResource( 133 )
+CheckBox/icons/checked = null
+CheckBox/icons/checked_disabled = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_checked_disabled = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_unchecked_disabled = null
+CheckBox/icons/unchecked = null
+CheckBox/icons/unchecked_disabled = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+Fonts/fonts/large = SubResource( 133 )
+Fonts/fonts/normal = SubResource( 133 )
+Label/colors/font_color = Color( 0.101961, 0.113725, 0.105882, 1 )
+Label/colors/font_color_shadow = Color( 0.486275, 0.537255, 0.458824, 1 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/constants/line_spacing = 0
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/fonts/font = SubResource( 133 )
+Label/styles/normal = null
+Panel/styles/panel = SubResource( 137 )
+PanelContainer/styles/panel = SubResource( 138 )
+
+[sub_resource type="DynamicFont" id=140]
+font_data = ExtResource( 1 )
+
+[node name="EndCredits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 139 )
+script = ExtResource( 3 )
+
+[node name="Credits" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -187.5
+margin_right = 400.0
+margin_bottom = 187.5
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 31.0
+text = "Game made in about a month with the lovely"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Credits/VBoxContainer"]
+margin_top = 35.0
+margin_right = 800.0
+margin_bottom = 375.0
+rect_min_size = Vector2( 800, 340 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -187.5
+margin_right = 400.0
+margin_bottom = 187.5
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer2"]
+margin_right = 800.0
+margin_bottom = 124.0
+text = "An attempt to make a game my wife would enjoy playing. 
+
+"
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="Credits/VBoxContainer2"]
+margin_top = 128.0
+margin_right = 800.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 140 )
+text = "(A failed attempt)
+
+"
+align = 1
+autowrap = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -526.5
+margin_top = -187.5
+margin_right = 526.5
+margin_bottom = 187.5
+script = ExtResource( 4 )
+seconds_displayed = 10
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer3"]
+margin_right = 1053.0
+margin_bottom = 31.0
+text = "I used many freely available resources from many talented people."
+align = 1
+
+[node name="Control" type="Control" parent="Credits/VBoxContainer3"]
+margin_top = 35.0
+margin_right = 1053.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="Label2" type="Label" parent="Credits/VBoxContainer3"]
+margin_top = 71.0
+margin_right = 1053.0
+margin_bottom = 288.0
+text = "Special recognition should go to:
+
+Chris Zabriskie for his amazing music.
+Pixabay and their sounds library.
+Material Maker and it's assets library.
+Amazing sketchfab artists that are too many to name.
+"
+align = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -526.5
+margin_top = -187.5
+margin_right = 526.5
+margin_bottom = 187.5
+script = ExtResource( 4 )
+seconds_displayed = 10
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer4"]
+margin_right = 1053.0
+margin_bottom = 124.0
+text = "Thank you for playing.
+
+
+Bye Bye."
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -85.0
+margin_top = -43.0
+margin_right = 85.0
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+margin_right = 170.0
+margin_bottom = 31.0
+text = " Exit Game "
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 35.0
+margin_right = 170.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

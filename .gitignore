@@ -1,0 +1,5 @@
+.import/
+*.import
+raw_assets/
+*.blend
+*.blend1

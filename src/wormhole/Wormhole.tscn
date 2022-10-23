@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://materials/wormhole_mat.tres" type="Material" id=1]
+[ext_resource path="res://meshes/wormhole_mesh.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://src/wormhole/Wormhole.gd" type="Script" id=3]
+
+[node name="Wormhole" type="MeshInstance"]
+transform = Transform( 8.75737, -3.11783, 3.68616, -0.557696, -8.23729, -5.64234, 4.79558, 4.73562, -7.38758, 5.83016, 18.6349, -2.79917 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
+script = ExtResource( 3 )

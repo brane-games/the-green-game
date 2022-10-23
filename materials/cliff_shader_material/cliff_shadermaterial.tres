@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://addons/vpainter/additional_resources/height_blend_4_textures.shader" type="Shader" id=1]
+[ext_resource path="res://materials/redrock/redrock_normal.png" type="Texture" id=2]
+[ext_resource path="res://materials/redrock/redrock_albedo.png" type="Texture" id=3]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/uv_scale = 17.665
+shader_param/r_uv_scale = 1.0
+shader_param/blend_softness1 = 0.025
+shader_param/blend_softness2 = 0.025
+shader_param/blend_softness3 = 0.025
+shader_param/roughness = null
+shader_param/point_size = null
+shader_param/roughness_texture_channel = Plane( 0.33, 0.33, 0.33, 0 )
+shader_param/c1 = ExtResource( 3 )
+shader_param/n1 = ExtResource( 2 )

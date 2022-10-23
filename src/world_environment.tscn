@@ -1,0 +1,161 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/base_environment.tres" type="Environment" id=1]
+[ext_resource path="res://addons/SIsilicon.vfx.godrays/GodRays.gd" type="Script" id=2]
+[ext_resource path="res://src/world_environment.gd" type="Script" id=3]
+[ext_resource path="res://src/end_credits/end_credits.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:environment:ambient_light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:environment:background_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("EndCredits:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "make_green"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:environment:ambient_light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 16.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:environment:background_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.6, 1.0, 2.55 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.917647, 0.945098, 0.905882, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("EndCredits:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("EndCredits")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_credits"
+} ]
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = ExtResource( 1 )
+script = ExtResource( 3 )
+lifeness = 100.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.793301, -0.0788643, -0.6037, -0.00394306, -0.990889, 0.134626, -0.608816, 0.109179, 0.785762, 13.766, 9.86161, -14.3567 )
+light_color = Color( 0.905882, 0.737255, 0.698039, 1 )
+light_energy = 1.5
+light_indirect_energy = 2.0
+light_specular = 0.021
+shadow_enabled = true
+shadow_color = Color( 0.32549, 0.32549, 0.32549, 1 )
+shadow_bias = 0.0
+
+[node name="GodRays" type="Spatial" parent="DirectionalLight"]
+transform = Transform( 0.970949, 0.00354649, -0.239258, -0.031028, 0.993314, -0.111193, 0.237264, 0.115387, 0.964568, -3.72959, -2.64416, -11.3343 )
+script = ExtResource( 2 )
+exposure = 0.256
+attenuation = 2.37841
+light_size = 0.332
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/make_green = SubResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="EndCredits" parent="." instance=ExtResource( 4 )]
+visible = false
