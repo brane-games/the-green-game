@@ -20,7 +20,7 @@ If you are learning about developing 3D games in Godot this codebase can teach y
 - Make opening credits and menu
 - Use other people plugins for faster prototyping
 - Fake grab mechanics
-- Combe **tool** and **export var** functionalities for some cool effects
+- Combine **tool** and **export var** functionalities for some cool effects
 - Use music and sound for creating atmosphere
 - Apply materials to your 3D models
 - Use 3D models from sketchfab
