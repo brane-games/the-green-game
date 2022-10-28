@@ -6,6 +6,9 @@ The game can be downloaded here:
 
 A Godot 3.5 game in which you pick up trash from a deserted beach.
 
+There is a VR port available now:
+https://github.com/teddybear082/the-green-game
+
 ![The Green Game](game.gif)
 
 The game was rushed and didn't get proper care till the end but I believe it can be useful example of a 3D game in Godot with a clear start and ending.
